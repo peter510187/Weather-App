@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Weather App</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+	<div class="login_window">
+		<div class="container login_space">
+			<div class="login_title">
+				LOGIN
+			</div>
+			<div role="form" id="signupform">
+				<div class="from-group">
+					<input type="email" id="form-email" class="input_text" placeholder="Email">
+				</div>
+				<div class="from-group">
+					<input type="password" id="form-password" class="input_text" placeholder="Password">
+				</div>
+				<div>
+					<input type="submit" id="signin" class="btn btn-light round" value="Sign In" onclick="handleSignIn();">
+				</div>
+				<div>
+					<input type="submit" id="signup" class="btn btn-outline-light round" value="Sign Up" onclick="handleSignUp();">
+				</div>
+				<div>
+					<div class="signIn_options">Sign in with</div>
+					<div class="">
+						<img class="login_icon" src="img/icons/facebook.png" onclick="handleFBLogin();">
+						<img class="login_icon" src="img/icons/google.png" onclick="handleGoogleLogin();">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="main_window">
+		<div class="hamburger_menu">
+			<nav role="navigation">
+				<div id="menuToggle">
+					<input id="input" type="checkbox" />
+
+					<span></span>
+					<span></span>
+					<span></span>
+
+					<ul id="menu">
+						<li>
+							<div class="" style="margin-bottom: 20px;">
+								<div class="Search_title text-dark">
+									Enter City Name
+								</div>
+								<div id="error"></div>
+							</div>
+							<div class="form_size">
+							  	<div class="row">
+							    	<div class="col-sm-12 col-md-8 col-lg-8 text_space">
+							      		<input id="city" type="text" class="form-control" placeholder="City Name">
+							    	</div>
+							    	<div class="col-sm-12 col-md-4 col-lg-4 text_space">
+							      		<button id="submit_weather" class="btn btn-dark main_round">Search City</button>
+							    	</div>
+							  	</div>
+							</div>
+							<div class="signout_space">
+								<img class="logout_icon" src="img/icons/logout.png" onclick="handleSignOut();">
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+
+		<div class="window">
+			<div class="background">
+				<div class="app_space container animated fadeInDown">
+					<div class="title">--</div>
+					<div class="date">--</div>
+					<div class="temp">--</div>
+					<div class="main">--</div>
+					<div id="degree" class="row">
+						<div class="col-6 degree_left">
+							<img id="change_background" src="img/icons/photo.png" class="pointer">
+						</div>
+						<div class="col-6 degree_right pointer">
+							<span id="degree_c" class="degree_non_click">°C</span>
+							<span>&nbsp;/&nbsp;</span>
+							<span id="degree_f" class="">°F</span>
+						</div>
+					</div>
+					<div class="detail_space row">
+						<div class="col-4 detail">
+							<img class="icon" src="img/icons/temp.png">
+							<div class="detail_title">Temperature</div>
+							<div class="detail_text temp_all">--</div>
+						</div>
+						<div class="col-4 detail">
+							<img class="icon" src="img/icons/sunrise.png">
+							<div class="detail_title">Sunrise</div>
+							<div class="detail_text sunrise">--</div>
+						</div>
+						<div class="col-4 detail">
+							<img class="icon" src="img/icons/sunset.png">
+							<div class="detail_title">Sunset</div>
+							<div class="detail_text sunset">--</div>
+						</div>
+						<div class="col-4 detail">
+							<img class="icon" src="img/icons/wind.png">
+							<div class="detail_title">Wind</div>
+							<div class="detail_text wind">--</div>
+						</div>
+						<div class="col-4 detail">
+							<img class="icon" src="img/icons/pressure.png">
+							<div class="detail_title">Pressure</div>
+							<div class="detail_text pressure">--</div>
+						</div>
+						<div class="col-4 detail">
+							<img class="icon" src="img/icons/humidity.png">
+							<div class="detail_title">Humidity</div>
+							<div class="detail_text humidity">--</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="py-3 footer-color">
+	      <div class="container">
+	        <p class="m-0 text-center text-white text-footer">Copyright © 2018. All Rights Reserved. Designed by Peter Chang.</p>
+	      </div>
+	    </footer>
+	</div>
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwtspWwYpZAMq77UIpoCi6ay_REIUstfA&libraries=places&language=en"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyAtAr-Go_iygNdA4elir0xaQLnKzEpJ0oo",
+			authDomain: "spring-break-app-41c10.firebaseapp.com",
+			databaseURL: "https://spring-break-app-41c10.firebaseio.com",
+			projectId: "spring-break-app-41c10",
+			storageBucket: "spring-break-app-41c10.appspot.com",
+			messagingSenderId: "260858835749"
+		};
+		firebase.initializeApp(config);
+	</script>
+	<script src="js/function.js"></script>
+
+	<script>
+		var input = document.getElementById('city');
+		var options = {
+			types: ['(cities)'],
+		};
+		var autocomplete = new google.maps.places.Autocomplete(input,options);
+
+    </script>
+	
+</body>
+</html>
