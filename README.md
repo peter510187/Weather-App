@@ -5,6 +5,9 @@ Weather-App is an application that can show users a real-time weather and city p
 ## Description
 This project is using different kinds of APIs to reach the basic weather application needs. It can search by city's name and show the real-time weather data and the city photos. Also, the application has basic login/logout functions.
 
+## Screen shots?
+<img src="screenshots/login.png" height="500">&nbsp;&nbsp;<img src="screenshots/home.JPG" height="500">&nbsp;&nbsp;<img src="screenshots/search_city.JPG" height="500">
+
 ## How it works?
 #### examples:
 ```javascript
